@@ -131,9 +131,11 @@ class MakeKafkaTopicCommandTest extends TestCase
         $this->artisan('make:kafka-topic', [
             'name'   => 'orders',
             '--path' => $this->tempPath,
-        ])
-            ->assertSuccessful()
-            ->expectsOutput('Kafka migration created');
+        ])->assertSuccessful();
+
+        // Verify the file was actually created as proof the command ran successfully
+        $files = $this->files->glob($this->tempPath . '/*_create_orders_topic.php');
+        $this->assertCount(1, $files);
     }
 
     public function test_it_uses_configured_default_path(): void

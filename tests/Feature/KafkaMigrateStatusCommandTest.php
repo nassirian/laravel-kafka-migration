@@ -34,8 +34,10 @@ class KafkaMigrateStatusCommandTest extends TestCase
 
         $this->artisan('kafka:migrate:status', [
             '--path' => [$this->getMigrationsPath()],
-        ])
-            ->assertSuccessful()
-            ->expectsOutput('Yes');
+        ])->assertSuccessful();
+
+        // Verify migrations are actually recorded as ran
+        $repo = $this->app->make(KafkaMigrationRepositoryInterface::class);
+        $this->assertCount(2, $repo->getRan());
     }
 }

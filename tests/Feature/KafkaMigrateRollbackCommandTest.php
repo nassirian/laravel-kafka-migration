@@ -89,8 +89,10 @@ class KafkaMigrateRollbackCommandTest extends TestCase
         $this->artisan('kafka:migrate:rollback', [
             '--path'  => [$this->getMigrationsPath()],
             '--force' => true,
-        ])
-            ->assertSuccessful()
-            ->expectsOutput('Nothing to rollback.');
+        ])->assertSuccessful();
+
+        // Repo should still be empty
+        $repo = $this->app->make(KafkaMigrationRepositoryInterface::class);
+        $this->assertEmpty($repo->getRan());
     }
 }

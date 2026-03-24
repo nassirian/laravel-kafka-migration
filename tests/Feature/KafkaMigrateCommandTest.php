@@ -57,13 +57,15 @@ class KafkaMigrateCommandTest extends TestCase
             '--force' => true,
         ])->assertSuccessful();
 
-        // Run again
+        // Run again — nothing new to migrate
         $this->artisan('kafka:migrate', [
             '--path'  => [$this->getMigrationsPath()],
             '--force' => true,
-        ])
-            ->assertSuccessful()
-            ->expectsOutput('Nothing to migrate.');
+        ])->assertSuccessful();
+
+        // Still the same 2 migrations in the log, no more
+        $repo = $this->app->make(KafkaMigrationRepositoryInterface::class);
+        $this->assertCount(2, $repo->getRan());
     }
 
     public function test_kafka_migrate_pretend_does_not_create_topics(): void

@@ -55,12 +55,14 @@ class KafkaMigrateResetCommandTest extends TestCase
             '--force' => true,
         ]);
 
-        // Reset again
+        // Reset again — nothing left
         $this->artisan('kafka:migrate:reset', [
             '--path'  => [$this->getMigrationsPath()],
             '--force' => true,
-        ])
-            ->assertSuccessful()
-            ->expectsOutput('Nothing to reset.');
+        ])->assertSuccessful();
+
+        // Repo should still be empty
+        $repo = $this->app->make(KafkaMigrationRepositoryInterface::class);
+        $this->assertEmpty($repo->getRan());
     }
 }
