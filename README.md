@@ -1,5 +1,10 @@
 # Laravel Kafka Migration
 
+[![Tests](https://github.com/nassirian/laravel-kafka-migration/actions/workflows/tests.yml/badge.svg)](https://github.com/nassirian/laravel-kafka-migration/actions/workflows/tests.yml)
+[![Latest Version on Packagist](https://img.shields.io/packagist/v/nassirian/laravel-kafka-migration.svg)](https://packagist.org/packages/nassirian/laravel-kafka-migration)
+[![PHP Version](https://img.shields.io/packagist/php-v/nassirian/laravel-kafka-migration.svg)](https://packagist.org/packages/nassirian/laravel-kafka-migration)
+[![License](https://img.shields.io/packagist/l/nassirian/laravel-kafka-migration.svg)](https://packagist.org/packages/nassirian/laravel-kafka-migration)
+
 Manage Kafka topics like Laravel migrations — create, track, and rollback Kafka topics using familiar artisan commands.
 
 ## Requirements
