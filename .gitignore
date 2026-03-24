@@ -1,0 +1,9 @@
+vendor/
+composer.lock
+.phpunit.cache/
+coverage/
+*.DS_Store
+storage/kafka-mock/
+.idea/
+.vscode/
+*.iml

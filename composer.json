@@ -1,0 +1,65 @@
+{
+    "name": "nassirian/laravel-kafka-migration",
+    "description": "Manage Kafka topics like Laravel migrations — create, migrate, and rollback Kafka topics with artisan commands.",
+    "keywords": ["laravel", "kafka", "migration", "topics", "queue"],
+    "homepage": "https://github.com/nassirian/laravel-kafka-migration",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Iman Nassirian",
+            "email": "nassiriani@gmail.com"
+        }
+    ],
+    "require": {
+        "php": "^8.1",
+        "illuminate/console": "^10.0|^11.0|^12.0",
+        "illuminate/container": "^10.0|^11.0|^12.0",
+        "illuminate/database": "^10.0|^11.0|^12.0",
+        "illuminate/filesystem": "^10.0|^11.0|^12.0",
+        "illuminate/support": "^10.0|^11.0|^12.0"
+    },
+    "require-dev": {
+        "orchestra/testbench": "^8.0|^9.0|^10.0",
+        "phpunit/phpunit": "^10.0|^11.0",
+        "mockery/mockery": "^1.6",
+        "longlang/phpkafka": "^1.2"
+    },
+    "suggest": {
+        "ext-rdkafka": "Required for the rdkafka and jobcloud drivers",
+        "longlang/phpkafka": "Required for the longlang driver (pure PHP Kafka client)",
+        "jobcloud/php-kafka-lib": "Required for the jobcloud driver (fluent rdkafka wrapper)",
+        "ext-curl": "Required for the HTTP/Confluent REST Proxy driver"
+    },
+    "autoload": {
+        "psr-4": {
+            "Nassirian\\LaravelKafkaMigration\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Nassirian\\LaravelKafkaMigration\\Tests\\": "tests/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Nassirian\\LaravelKafkaMigration\\KafkaMigrationServiceProvider"
+            ],
+            "aliases": {
+                "KafkaMigration": "Nassirian\\LaravelKafkaMigration\\Facades\\KafkaManager"
+            }
+        }
+    },
+    "scripts": {
+        "test": "vendor/bin/phpunit",
+        "test-unit": "vendor/bin/phpunit --testsuite Unit",
+        "test-feature": "vendor/bin/phpunit --testsuite Feature",
+        "test-integration": "vendor/bin/phpunit --group integration",
+        "test-coverage": "vendor/bin/phpunit --coverage-html coverage"
+    },
+    "config": {
+        "sort-packages": true
+    },
+    "minimum-stability": "stable",
+    "prefer-stable": true
+}

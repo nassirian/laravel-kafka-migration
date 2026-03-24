@@ -1,0 +1,31 @@
+<?php
+
+// Migration class: {{ className }}
+
+use Nassirian\LaravelKafkaMigration\Migration\KafkaMigration;
+
+return new class extends KafkaMigration
+{
+    /**
+     * Run the migration — create the Kafka topic(s).
+     */
+    public function up(): void
+    {
+        $this->createTopic(
+            $this->topic('{{ topicName }}')
+                ->partitions(3)
+                ->replicationFactor(1)
+                ->retentionMs(604_800_000)   // 7 days
+                ->cleanupPolicy('delete')
+                ->compressionType('snappy')
+        );
+    }
+
+    /**
+     * Reverse the migration — delete the Kafka topic(s).
+     */
+    public function down(): void
+    {
+        $this->deleteTopic('{{ topicName }}');
+    }
+};
