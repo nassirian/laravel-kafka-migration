@@ -91,6 +91,6 @@ class KafkaMigrateRollbackCommandTest extends TestCase
             '--force' => true,
         ])
             ->assertSuccessful()
-            ->expectsOutputToContain('Nothing to rollback');
+            ->expectsOutput('Nothing to rollback.');
     }
 }

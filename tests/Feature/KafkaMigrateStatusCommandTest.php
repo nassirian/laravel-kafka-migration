@@ -11,7 +11,7 @@ class KafkaMigrateStatusCommandTest extends TestCase
     {
         $this->artisan('kafka:migrate:status', [
             '--path' => [$this->getMigrationsPath()],
-        ])->assertFailed();
+        ])->assertExitCode(1);
     }
 
     public function test_status_shows_pending_migrations(): void
@@ -36,6 +36,6 @@ class KafkaMigrateStatusCommandTest extends TestCase
             '--path' => [$this->getMigrationsPath()],
         ])
             ->assertSuccessful()
-            ->expectsOutputToContain('Yes');
+            ->expectsOutput('Yes');
     }
 }

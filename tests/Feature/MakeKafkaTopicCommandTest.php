@@ -133,7 +133,7 @@ class MakeKafkaTopicCommandTest extends TestCase
             '--path' => $this->tempPath,
         ])
             ->assertSuccessful()
-            ->expectsOutputToContain('Kafka migration created');
+            ->expectsOutput('Kafka migration created');
     }
 
     public function test_it_uses_configured_default_path(): void

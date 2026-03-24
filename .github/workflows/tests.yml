@@ -69,7 +69,7 @@ jobs:
           extensions: dom, curl, libxml, mbstring, zip, pdo, sqlite3, pdo_sqlite
           coverage: none
 
-      - name: Install dependencies
+      - name: Pin Laravel and dev dependencies
         run: |
           composer require \
             "illuminate/support:${{ matrix.laravel }}" \
@@ -77,10 +77,14 @@ jobs:
             "illuminate/container:${{ matrix.laravel }}" \
             "illuminate/database:${{ matrix.laravel }}" \
             "illuminate/filesystem:${{ matrix.laravel }}" \
+            --no-interaction --no-update
+          composer require --dev \
             "orchestra/testbench:${{ matrix.testbench }}" \
             "phpunit/phpunit:${{ matrix.phpunit }}" \
             --no-interaction --no-update
-          composer update --prefer-dist --no-interaction --no-progress
+
+      - name: Install dependencies
+        run: composer update --prefer-dist --no-interaction --no-progress --no-audit
 
       - name: Run tests
         run: ./vendor/bin/phpunit --exclude-group integration

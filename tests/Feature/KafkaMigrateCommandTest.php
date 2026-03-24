@@ -63,7 +63,7 @@ class KafkaMigrateCommandTest extends TestCase
             '--force' => true,
         ])
             ->assertSuccessful()
-            ->expectsOutputToContain('Nothing to migrate');
+            ->expectsOutput('Nothing to migrate.');
     }
 
     public function test_kafka_migrate_pretend_does_not_create_topics(): void

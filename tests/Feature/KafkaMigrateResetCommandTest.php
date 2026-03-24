@@ -61,6 +61,6 @@ class KafkaMigrateResetCommandTest extends TestCase
             '--force' => true,
         ])
             ->assertSuccessful()
-            ->expectsOutputToContain('Nothing to reset');
+            ->expectsOutput('Nothing to reset.');
     }
 }
