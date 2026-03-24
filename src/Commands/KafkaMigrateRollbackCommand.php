@@ -40,9 +40,9 @@ class KafkaMigrateRollbackCommand extends Command
         }
 
         if (empty($rolled)) {
-            $this->components->info('Nothing to rollback.');
+            $this->info('Nothing to rollback.');
         } else {
-            $this->components->info(count($rolled) . ' Kafka topic migration(s) rolled back.');
+            $this->info(count($rolled) . ' Kafka topic migration(s) rolled back.');
         }
 
         return self::SUCCESS;
@@ -75,7 +75,7 @@ class KafkaMigrateRollbackCommand extends Command
 
         if ($this->laravel->environment('production')) {
             if (! $this->confirm('You are in <fg=red>production</> — proceed?')) {
-                $this->components->warn('Kafka rollback cancelled.');
+                $this->warn('Kafka rollback cancelled.');
 
                 return false;
             }

@@ -30,7 +30,7 @@ class KafkaMigrateCommand extends Command
 
         if (! $this->migrator->repositoryExists()) {
             $this->migrator->getRepository()->createRepository();
-            $this->components->info('Kafka migrations table created.');
+            $this->info('Kafka migrations table created.');
         }
 
         $paths   = $this->getMigrationsPaths();
@@ -43,9 +43,9 @@ class KafkaMigrateCommand extends Command
         }
 
         if (empty($migrated)) {
-            $this->components->info('Nothing to migrate.');
+            $this->info('Nothing to migrate.');
         } else {
-            $this->components->info(count($migrated) . ' Kafka topic migration(s) ran successfully.');
+            $this->info(count($migrated) . ' Kafka topic migration(s) ran successfully.');
         }
 
         return self::SUCCESS;
@@ -78,7 +78,7 @@ class KafkaMigrateCommand extends Command
 
         if ($this->laravel->environment('production')) {
             if (! $this->confirm('You are in <fg=red>production</> — proceed?')) {
-                $this->components->warn('Kafka migration cancelled.');
+                $this->warn('Kafka migration cancelled.');
 
                 return false;
             }

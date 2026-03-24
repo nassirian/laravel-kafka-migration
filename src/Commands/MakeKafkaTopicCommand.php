@@ -39,7 +39,7 @@ class MakeKafkaTopicCommand extends Command
         $stub    = $this->buildStub($topicName);
         $this->files->put($fullPath, $stub);
 
-        $this->components->info("Kafka migration created: <fg=cyan>{$fileName}</>");
+        $this->info("Kafka migration created: {$fileName}");
 
         return self::SUCCESS;
     }

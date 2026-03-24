@@ -23,7 +23,7 @@ class KafkaMigrateStatusCommand extends Command
     public function handle(): int
     {
         if (! $this->migrator->repositoryExists()) {
-            $this->components->error('Kafka migrations table not found. Run kafka:migrate first.');
+            $this->error('Kafka migrations table not found. Run kafka:migrate first.');
 
             return self::FAILURE;
         }
@@ -32,7 +32,7 @@ class KafkaMigrateStatusCommand extends Command
         $status = $this->migrator->status($paths);
 
         if (empty($status)) {
-            $this->components->info('No Kafka migration files found.');
+            $this->info('No Kafka migration files found.');
 
             return self::SUCCESS;
         }

@@ -38,9 +38,9 @@ class KafkaMigrateResetCommand extends Command
         }
 
         if (empty($reset)) {
-            $this->components->info('Nothing to reset.');
+            $this->info('Nothing to reset.');
         } else {
-            $this->components->info(count($reset) . ' Kafka topic migration(s) reset.');
+            $this->info(count($reset) . ' Kafka topic migration(s) reset.');
         }
 
         return self::SUCCESS;
@@ -73,7 +73,7 @@ class KafkaMigrateResetCommand extends Command
 
         if ($this->laravel->environment('production')) {
             if (! $this->confirm('You are in <fg=red>production</> — proceed?')) {
-                $this->components->warn('Kafka reset cancelled.');
+                $this->warn('Kafka reset cancelled.');
 
                 return false;
             }
