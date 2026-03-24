@@ -10,6 +10,9 @@ jobs:
   test:
     runs-on: ubuntu-latest
 
+    env:
+      FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+
     strategy:
       fail-fast: false
       matrix:
@@ -69,22 +72,17 @@ jobs:
           extensions: dom, curl, libxml, mbstring, zip, pdo, sqlite3, pdo_sqlite
           coverage: none
 
-      - name: Pin Laravel and dev dependencies
-        run: |
-          composer require \
-            "illuminate/support:${{ matrix.laravel }}" \
-            "illuminate/console:${{ matrix.laravel }}" \
-            "illuminate/container:${{ matrix.laravel }}" \
-            "illuminate/database:${{ matrix.laravel }}" \
-            "illuminate/filesystem:${{ matrix.laravel }}" \
-            --no-interaction --no-update
-          composer require --dev \
-            "orchestra/testbench:${{ matrix.testbench }}" \
-            "phpunit/phpunit:${{ matrix.phpunit }}" \
-            --no-interaction --no-update
-
       - name: Install dependencies
-        run: composer update --prefer-dist --no-interaction --no-progress --no-audit
+        run: |
+          composer update \
+            --with "illuminate/support:${{ matrix.laravel }}" \
+            --with "illuminate/console:${{ matrix.laravel }}" \
+            --with "illuminate/container:${{ matrix.laravel }}" \
+            --with "illuminate/database:${{ matrix.laravel }}" \
+            --with "illuminate/filesystem:${{ matrix.laravel }}" \
+            --with "orchestra/testbench:${{ matrix.testbench }}" \
+            --with "phpunit/phpunit:${{ matrix.phpunit }}" \
+            --prefer-dist --no-interaction --no-progress --no-audit
 
       - name: Run tests
         run: ./vendor/bin/phpunit --exclude-group integration
