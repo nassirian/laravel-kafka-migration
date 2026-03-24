@@ -82,7 +82,7 @@ jobs:
             --with "illuminate/filesystem:${{ matrix.laravel }}" \
             --with "orchestra/testbench:${{ matrix.testbench }}" \
             --with "phpunit/phpunit:${{ matrix.phpunit }}" \
-            --prefer-dist --no-interaction --no-progress --no-audit
+            --prefer-dist --no-interaction --no-progress
 
       - name: Run tests
         run: ./vendor/bin/phpunit --exclude-group integration
