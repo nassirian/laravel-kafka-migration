@@ -10,7 +10,7 @@ Manage Kafka topics like Laravel migrations — create, track, and rollback Kafk
 ## Requirements
 
 - PHP 8.1+
-- Laravel 9, 10, 11, or 12
+- Laravel 10, 11, or 12
 
 ## Installation
 

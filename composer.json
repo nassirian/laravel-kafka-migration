@@ -12,16 +12,16 @@
     ],
     "require": {
         "php": "^8.1",
-        "illuminate/console": "^8.0|^9.0|^10.0|^11.0|^12.0",
-        "illuminate/container": "^8.0|^9.0|^10.0|^11.0|^12.0",
-        "illuminate/database": "^8.0|^9.0|^10.0|^11.0|^12.0",
-        "illuminate/filesystem": "^8.0|^9.0|^10.0|^11.0|^12.0",
-        "illuminate/support": "^8.0|^9.0|^10.0|^11.0|^12.0"
+        "illuminate/console": "^10.0|^11.0|^12.0",
+        "illuminate/container": "^10.0|^11.0|^12.0",
+        "illuminate/database": "^10.0|^11.0|^12.0",
+        "illuminate/filesystem": "^10.0|^11.0|^12.0",
+        "illuminate/support": "^10.0|^11.0|^12.0"
     },
     "require-dev": {
-        "orchestra/testbench": "^6.0|^7.0|^8.0|^9.0|^10.0",
-        "phpunit/phpunit": "^9.0|^10.0|^11.0",
-        "mockery/mockery": "^1.5|^1.6"
+        "orchestra/testbench": "^8.0|^9.0|^10.0",
+        "phpunit/phpunit": "^10.0|^11.0",
+        "mockery/mockery": "^1.6"
     },
     "suggest": {
         "ext-rdkafka": "Required for the rdkafka and jobcloud drivers",
@@ -57,19 +57,7 @@
         "test-coverage": "vendor/bin/phpunit --coverage-html coverage"
     },
     "config": {
-        "sort-packages": true,
-        "audit": {
-            "abandoned": "ignore",
-            "ignore": {
-                "PKSA-8qx3-n5y5-vvnd": "Legacy Laravel 8/9 compatibility testing",
-                "PKSA-w7xr-vk7n-rstm": "Legacy Laravel 8/9 compatibility testing",
-                "PKSA-p3rx-dfwp-73ny": "Legacy Laravel 8 compatibility testing",
-                "PKSA-ckwp-rt7t-c46m": "Legacy Laravel 8 compatibility testing",
-                "PKSA-4npr-btr6-zhny": "Legacy Laravel 8 compatibility testing",
-                "PKSA-njrm-6dtg-m2nc": "Legacy Laravel 8 compatibility testing",
-                "PKSA-985r-hryy-555b": "Legacy Laravel 8 compatibility testing"
-            }
-        }
+        "sort-packages": true
     },
     "minimum-stability": "stable",
     "prefer-stable": true
